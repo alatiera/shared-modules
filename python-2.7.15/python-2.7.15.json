@@ -1,0 +1,29 @@
+{
+    "name": "python2",
+    "sources": [
+        {
+            "type": "archive",
+            "url": "https://www.python.org/ftp/python/2.7.15/Python-2.7.15.tgz",
+            "sha256": "18617d1f15a380a919d517630a9cd85ce17ea602f9bbdc58ddc672df4b0239db"
+        },
+    ],
+    "buildsystem": "autotools",
+    "confgi-opts": [
+        "--enable-shared",
+        "--with-ensurepip=yes",
+        "--with-system-expat",
+        "--with-system-ffi",
+        "--enable-loadable-sqlite-extensions",
+        "--with-dbmliborder=gdbm",
+        "--enable-unicode=ucs4"
+    ],
+    "build-options": {
+      "env": {
+          "CFLAGS": ["-O2", "-g", "-fstack-protector-strong"],
+          "CPPFLAGS": ["-O2", "-D_FORTIFY_SOURCE=2"],
+          "CXXFLAGS": ["-O2", "-g -fstack-protector-strong"],
+          "LDFLAGS": ["-fstack-protector-strong", "-Wl","-z","relro","-z","now"],
+          "LC_ALL": "en_US.UTF-8"
+      }
+    }
+}
